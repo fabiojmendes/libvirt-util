@@ -1,5 +1,5 @@
 <domain type='kvm'>
-  <name>${host}</name>
+  <name>${HOST}</name>
   <memory unit='MB'>1024</memory>
   <vcpu>2</vcpu>
   <cpu mode='host-passthrough'>
@@ -15,13 +15,13 @@
     <console type='pty'/>
     <!-- CDROM add <boot dev='cdrom'/> to the <os> section -->
     <disk type='file' device='cdrom'>
-      <source file='${seed}'/>
+      <source file='${SEED}'/>
       <target dev='hda' bus='ide' />
       <readonly/>
     </disk>
     <disk type='file'>
       <driver name='qemu' type='qcow2'/>
-      <source file='${drive}'/>
+      <source file='${DRIVE}'/>
       <target dev='vda' bus='virtio'/>
     </disk>
     <interface type='direct'>
