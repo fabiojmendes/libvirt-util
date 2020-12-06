@@ -1,0 +1,29 @@
+#cloud-config
+# vim: ft=yaml
+
+password: changeit
+chpasswd: {expire: False}
+nssh_pwauth: True
+ssh_authorized_keys:
+  - ${ssh_key}
+
+package_upgrade: true
+packages:
+  - avahi
+  - nss-mdns
+  - zsh
+  - vim
+  - curl
+  - tree
+  - tmux
+  - git
+  - sqlite
+  - util-linux-user
+
+runcmd:
+ - [ sed, -i.bkp, 's/mdns4_minimal/mdns6_minimal/', /etc/nsswitch.conf ]
+
+power_state:
+  mode: reboot
+  message: Bye Bye
+  condition: True

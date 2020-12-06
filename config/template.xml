@@ -1,0 +1,42 @@
+<domain type='kvm'>
+  <name>${host}</name>
+  <memory unit='MB'>1024</memory>
+  <vcpu>2</vcpu>
+  <cpu mode='host-passthrough'>
+    <topology sockets='1' cores='2' threads='1'/>
+  </cpu>
+  <os>
+    <type arch='x86_64' machine='pc-i440fx-2.3'>hvm</type>
+  </os>
+  <features>
+    <acpi/>
+  </features>
+  <devices>
+    <console type='pty'/>
+    <!-- CDROM add <boot dev='cdrom'/> to the <os> section -->
+    <disk type='file' device='cdrom'>
+      <source file='${seed}'/>
+      <target dev='hda' bus='ide' />
+      <readonly/>
+    </disk>
+    <disk type='file'>
+      <driver name='qemu' type='qcow2'/>
+      <source file='${drive}'/>
+      <target dev='vda' bus='virtio'/>
+    </disk>
+    <interface type='direct'>
+      <source dev='enp6s0' mode='bridge'/>
+    </interface>
+    <!-- Optionals -->
+    <!--
+    <interface type='network'>
+      <source network='default'/>
+    </interface>
+    -->
+    <!--
+    <graphics type='vnc'>
+      <listen type='address' address='0.0.0.0' passwd='1234'/>
+    </graphics>
+    -->
+  </devices>
+</domain>
