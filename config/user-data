@@ -22,6 +22,7 @@ packages:
 
 runcmd:
  - [ sed, -i.bkp, 's/mdns4_minimal/mdns6_minimal/', /etc/nsswitch.conf ]
+ - [ sed, -i.bkp, 's/#\(publish-a-on-ipv6\)=.*/\1=yes/', /etc/avahi/avahi-daemon.conf ]
 
 power_state:
   mode: reboot
