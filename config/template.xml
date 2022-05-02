@@ -6,7 +6,7 @@
     <topology sockets='1' cores='2' threads='1'/>
   </cpu>
   <os>
-    <type arch='x86_64' machine='pc-i440fx-2.3'>hvm</type>
+    <type arch='x86_64'>hvm</type>
   </os>
   <features>
     <acpi/>
@@ -25,7 +25,7 @@
       <target dev='vda' bus='virtio'/>
     </disk>
     <interface type='direct'>
-      <source dev='enp6s0' mode='bridge'/>
+      <source dev='enp35s0' mode='bridge'/>
     </interface>
     <!-- Optionals -->
     <!--

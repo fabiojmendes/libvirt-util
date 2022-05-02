@@ -31,7 +31,7 @@ $(DIR):
 	mkdir $@
 
 $(DRIVE): | $(DIR)
-	qemu-img create -f qcow2 -b $(BASE_IMG_PATH) $@ 20G
+	qemu-img create -F qcow2 -b $(BASE_IMG_PATH) -f qcow2 $@ 20G
 
 $(USER_DATA): | $(TEMP)
 	envsubst < $(CONFIG)/user-data > $@
